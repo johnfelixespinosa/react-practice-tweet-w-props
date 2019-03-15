@@ -23,6 +23,20 @@ function Tweet({ tweet }) {
   );
 }
 
+Tweet.propTypes = {
+  tweet: PropTypes.shape({
+    message: PropTypes.string.isRequired, 
+    gravatar: PropTypes.string.isRequired,
+      author: PropTypes.shape({
+        handle: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired 
+      }).isRequired,
+    likes: PropTypes.number,
+    retweets: PropTypes.number,
+    timestamp: PropTypes.string.isRequired
+  }).isRequired
+}
+
 function Avatar({ hash }) {
   let url = `https://www.gravatar.com/avatar/${hash}`
   return (
@@ -33,6 +47,10 @@ function Avatar({ hash }) {
     />
   );
 }
+
+Avatar.propTypes = {
+  hash: PropTypes.string.isRequired
+};
 
 function Message({ text }) {
   return (
